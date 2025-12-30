@@ -540,44 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // ========== COOKIE CONSENT ==========
-  function checkCookieConsent() {
-    const consent = localStorage.getItem('cookieConsent');
-    
-    if (!consent) {
-      showCookieBanner();
-    }
-  }
-  
-  function showCookieBanner() {
-    const banner = document.createElement('div');
-    banner.className = 'cookie-banner';
-    banner.innerHTML = `
-      <div class="cookie-content">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-        <div class="cookie-buttons">
-          <button class="cookie-accept">Accept</button>
-          <button class="cookie-decline">Decline</button>
-        </div>
-      </div>
-    `;
-    
-    document.body.appendChild(banner);
-    
-    // Add event listeners
-    banner.querySelector('.cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      banner.remove();
-    });
-    
-    banner.querySelector('.cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'declined');
-      banner.remove();
-    });
-  }
-  
-  // Check cookie consent on page load
-  setTimeout(checkCookieConsent, 1000);
+ 
   
   // ========== INITIALIZATION COMPLETE ==========
   console.log('LMS FinTax Website Initialized Successfully!');
@@ -631,3 +594,59 @@ if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
     });
   });
 }
+
+//One-Time Services
+// Mobile links fix
+document.addEventListener('DOMContentLoaded', function() {
+    // Fix mobile service card links
+    function fixMobileLinks() {
+        if (window.innerWidth <= 768) {
+            // Remove any overlays that might block clicks
+            const mobileButtons = document.querySelectorAll('.mobile-service-btn');
+            mobileButtons.forEach(button => {
+                // Ensure pointer events are enabled
+                button.style.pointerEvents = 'auto';
+                button.style.cursor = 'pointer';
+                
+                // Remove any pseudo-elements that might block clicks
+                const pseudo = button.querySelector('.click-overlay');
+                if (pseudo) {
+                    pseudo.remove();
+                }
+            });
+            
+            // Also fix for cards created by JavaScript
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.style.pointerEvents = 'auto';
+            });
+        }
+    }
+    
+    // Run on load
+    fixMobileLinks();
+    
+    // Run on resize
+    window.addEventListener('resize', fixMobileLinks);
+    
+    // Add click event listener to ensure links work
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            const mobileBtn = e.target.closest('.mobile-service-btn');
+            if (mobileBtn && mobileBtn.href) {
+                // Allow default link behavior
+                return true;
+            }
+            
+            // If clicking on service card, find the link inside it
+            const serviceCard = e.target.closest('.service-card');
+            if (serviceCard) {
+                const link = serviceCard.querySelector('.mobile-service-btn');
+                if (link && link.href) {
+                    e.preventDefault();
+                    window.open(link.href, link.target || '_self');
+                }
+            }
+        }
+    });
+});

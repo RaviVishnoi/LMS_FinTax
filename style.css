@@ -104,12 +104,12 @@ section {
 }
 
 /* One-Time Services */
-.one-time-services {
-    padding-top: 80px;
-    padding-bottom: 80px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
+/* .one-time-services {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+} */
 
 /* Industries Section */
 .industries-section {
@@ -209,7 +209,7 @@ section {
     transform: translateY(0);
 }
 
-/* Navigation Styles - Updated */
+/* Navigation Styles  */
 .navbar {
     position: fixed;
     top: 0;
@@ -227,7 +227,7 @@ section {
     padding: 0 5%;
 }
 
-/* Remove the extra .navbar .container styles and simplify */
+/* .navbar .container styles and simplify */
 .navbar .container {
     display: flex;
     justify-content: space-between;
@@ -913,20 +913,37 @@ section {
 }
 
 /* One-Time Services */
+.one-time-services {
+    padding: 40px 20px;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Desktop: Table Layout */
 .table-container {
-    overflow-x: auto;
-    margin-top: 3rem;
-    border-radius: calc(var(--radius) * 1.5);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--gray-light);
-    background: var(--white);
+    margin-top: 2rem;
 }
 
 .one-time-table {
     width: 100%;
     border-collapse: collapse;
     background: var(--white);
-    min-width: 800px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
 .one-time-table thead {
@@ -935,15 +952,16 @@ section {
 }
 
 .one-time-table th {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     text-align: left;
     font-weight: 600;
     font-size: 1.1rem;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .one-time-table td {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     border-bottom: 1px solid var(--gray-light);
     font-size: 1rem;
 }
@@ -954,9 +972,135 @@ section {
 
 .one-time-table tbody tr:hover {
     background: linear-gradient(to right, rgba(79, 70, 229, 0.05), rgba(16, 185, 129, 0.05));
-    transform: translateX(5px);
 }
 
+.one-time-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.service-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 500;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    min-width: 140px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+/* Mobile: Cards Layout */
+@media (max-width: 768px) {
+    .one-time-services {
+        padding: 30px 15px;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        padding: 0 10px;
+    }
+    
+    /* Table completely hide */
+    .table-container {
+        display: none !important;
+    }
+    
+    /* New Mobile Cards Container */
+    .mobile-services-container {
+        display: block;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .service-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--gray-light);
+        transition: var(--transition);
+        position: relative;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+        line-height: 1.4;
+        padding-right: 10px;
+    }
+    
+    .mobile-service-btn {
+        display: block;
+        width: 100%;
+        padding: 0.875rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        z-index: 2;
+    }
+    
+    .mobile-service-btn:hover,
+    .mobile-service-btn:active {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        text-decoration: none;
+    }
+    
+    /* Ensure link is clickable */
+    .mobile-service-btn::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+    }
+}
+
+/* Desktop: Hide Mobile Container */
+@media (min-width: 769px) {
+    .mobile-services-container {
+        display: none !important;
+    }
+    
+    .table-container {
+        display: block !important;
+    }
+}
 /* Industries Section */
 .industries-grid {
     display: grid;
