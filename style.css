@@ -2206,7 +2206,9 @@ textarea:valid {
     .logo img {
         width: 100px;
     }
-
+ .hero-section{
+    margin-top: 50px;
+ }
     .navbar {
         padding: 0.8rem 15px;
     }
@@ -2257,7 +2259,9 @@ textarea:valid {
     .hero-text h1 {
         font-size: 2rem;
     }
-
+ .hero-section{
+    margin-top: 50px;
+ }
     .services-grid,
     .pricing-grid,
     .industries-grid,
