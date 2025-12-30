@@ -540,44 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // ========== COOKIE CONSENT ==========
-  function checkCookieConsent() {
-    const consent = localStorage.getItem('cookieConsent');
-    
-    if (!consent) {
-      showCookieBanner();
-    }
-  }
-  
-  function showCookieBanner() {
-    const banner = document.createElement('div');
-    banner.className = 'cookie-banner';
-    banner.innerHTML = `
-      <div class="cookie-content">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-        <div class="cookie-buttons">
-          <button class="cookie-accept">Accept</button>
-          <button class="cookie-decline">Decline</button>
-        </div>
-      </div>
-    `;
-    
-    document.body.appendChild(banner);
-    
-    // Add event listeners
-    banner.querySelector('.cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      banner.remove();
-    });
-    
-    banner.querySelector('.cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'declined');
-      banner.remove();
-    });
-  }
-  
-  // Check cookie consent on page load
-  setTimeout(checkCookieConsent, 1000);
+
   
   // ========== INITIALIZATION COMPLETE ==========
   console.log('LMS FinTax Website Initialized Successfully!');
