@@ -219,7 +219,7 @@ section {
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
@@ -389,7 +389,7 @@ section {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-    padding: 0.8rem 0;
+    padding: 0.3rem 0;
 }
 
 .navbar.sticky .logo img {
@@ -417,7 +417,7 @@ section {
     font-size: 3.2rem;
     margin-bottom: 1.8rem;
     line-height: 1.1;
-    margin-top: 7.8rem;
+    margin-top: 8.8rem;
 }
 
 .hero-text h1 span {
