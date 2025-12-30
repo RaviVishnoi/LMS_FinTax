@@ -540,7 +540,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> b14bcf9b2f7b73b05b9d6c1aa4e1d2b2f6931a8d
   
   // ========== INITIALIZATION COMPLETE ==========
   console.log('LMS FinTax Website Initialized Successfully!');
@@ -594,6 +598,7 @@ if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
     });
   });
 }
+<<<<<<< HEAD
 
 //One-Time Services
 // Mobile links fix
@@ -650,3 +655,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+=======
+>>>>>>> b14bcf9b2f7b73b05b9d6c1aa4e1d2b2f6931a8d
