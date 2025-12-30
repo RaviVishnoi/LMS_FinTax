@@ -1684,37 +1684,99 @@ section {
 .consultation-box {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-radius: calc(var(--radius) * 1.5);
     margin-bottom: 3rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow effect */
+.consultation-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, 
+        rgba(79, 70, 229, 0.4), 
+        rgba(16, 185, 129, 0.4), 
+        rgba(79, 70, 229, 0.4));
+    border-radius: calc(var(--radius) * 1.5 + 2px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.consultation-box:hover::before {
+    opacity: 1;
 }
 
 .consultation-box:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .consultation-box a {
-    color: white;
-    display: flex;
+    color: rgb(17, 0, 255);
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+    min-width: 300px;
+}
+
+.consultation-box a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
 }
 
 .consultation-box a i {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .consultation-box p {
-    margin-bottom: 0;
+    margin: 1rem 0 0 0;
     font-size: 0.95rem;
     opacity: 0.9;
+    font-style: italic;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: inline-block;
 }
+
+
+
 
 .btn-group {
     display: flex;
@@ -2460,5 +2522,36 @@ textarea:valid {
     .modal-content {
             width: 95%;
         padding: 1.5rem;
+    }
+}
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .consultation-box {
+        padding: 1.5rem 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .consultation-box a {
+        flex-direction: column;
+        gap: 8px;
+        padding: 1rem;
+        min-width: auto;
+        width: 100%;
+        font-size: 1.1rem;
+    }
+    
+    .consultation-box a i {
+        margin-bottom: 5px;
+    }
+    
+    .consultation-box p {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .consultation-box::after {
+        font-size: 0.6rem;
+        right: -35px;
+        padding: 3px 35px;
     }
 }
